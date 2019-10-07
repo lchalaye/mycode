@@ -1,0 +1,97 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Document sans nom</title>
+<style>
+body{
+  font-family: 'Montserrat', sans-serif;
+  margin:0;
+}
+
+
+.btn {
+  flex: 1 1 auto;
+  margin: 10px;
+  padding: 30px;
+  text-align: center;
+  text-transform: uppercase;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: white;
+ /* text-shadow: 0px 0px 10px rgba(0,0,0,0.2);*/
+  box-shadow: 0 0 20px #eee;
+  border-radius: 10px;
+
+ }
+#canvas1{
+background-color:#FF0000;
+}
+
+
+/* Demo Stuff End -> */
+
+/* <- Magic Stuff Start */
+
+.btn:hover {
+  background-position: right center; /* change the direction of the change here */
+}
+
+.btn-1 {
+  background-image: linear-gradient(to right, #f6d365 0%, #fda085 51%, #f6d365 100%);
+}
+
+.btn-2 {
+  background-image: linear-gradient(to right, #fbc2eb 0%, #a6c1ee 51%, #fbc2eb 100%);
+}
+
+.btn-3 {
+  background-image: linear-gradient(to right, #84fab0 0%, #8fd3f4 51%, #84fab0 100%);
+}
+
+.btn-4 {
+  background-image: linear-gradient(to right, #a1c4fd 0%, #c2e9fb 51%, #a1c4fd 100%);
+}
+
+.btn-5 {
+  background-image: linear-gradient(to right, #ffecd2 0%, #fcb69f 51%, #ffecd2 100%);
+}
+
+</style>
+<script>
+function afficher() {
+var c = document.getElementById("canvas1");
+var ctx = c.getContext("2d");
+ctx.lineWidth= 10;
+ctx.strokeStyle="blue";
+ctx.beginPath();
+ctx.moveTo(50,50);
+ctx.lineTo(200,200);
+ctx.moveTo(200,50);
+ctx.lineTo(50,200);
+ctx.closePath();
+ctx.stroke();
+canvas1.style.visibility="visible";
+
+}
+function cacher() {
+	document.getElementById("canvas1")
+	canvas1.style.visibility="hidden";
+
+}
+
+</script>
+</head>
+
+<body>
+<canvas id="canvas1" width="250" height="200">
+Texte alternatif pour les navigateurs qui ne lisent pas les canvas.
+</canvas>
+
+<button id="afficher" name="afficher" onClick="afficher()" class="btn btn-1"> Afficher la croix </button>
+<button id="cacher" name="cacher" onClick="cacher()" class="btn btn-2"> Cacher la croix </button>
+<script>
+canvas1.style.visibility="hidden";
+</script>
+</body>
+</html>
