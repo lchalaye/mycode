@@ -1,0 +1,44 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Document sans nom</title>
+<script src="jquery-3.3.1.min.js"></script>
+<style>
+
+h1{
+	position:relative;
+	border:2px solid black;
+	background-color:#eff;
+	width:200px;
+	padding:20px
+}
+</style>
+<script>
+$(document).ready(function()
+{
+	$('h1').click(function()
+	{
+		var prop={
+			left:500,
+			opacity:0.5,
+			"border-radius":100,
+			padding: 100
+
+		};
+		$('h1').animate(prop,2000,function()
+		{ var retour={left:0,
+		opacity:1,
+		"border-radius":0,
+		padding:20};
+		$("h1").animate(retour,1000);
+		});
+	});
+});
+</script>
+</head>
+
+<body>
+<h1> Jquery </h1>
+</body>
+</html>
