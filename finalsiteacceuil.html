@@ -1,0 +1,365 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+<title>Document sans nom</title>
+<style>
+
+.yo {
+  width: 100%;
+  background-image:url("votreimage.png"), linear-gradient(#7E4900,#FF1704);
+  background-size: cover;
+  padding-top: 56.44%;
+  background-position: 0 0, -1800px 0px;
+  background-repeat: no-repeat;
+  background-blend-mode: luminosity;
+  transition: 3s background-position linear;
+  margin: 0 auto;
+}
+.degrad { background-position: 0 0, 0 0; }
+
+
+
+
+
+
+
+
+.cf:after {
+  clear: both;
+}
+
+.cf {
+  *zoom: 1;
+}
+
+/* Mini reset, no margins, paddings or bullets */
+.menu,
+.submenu {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* Main level */
+.menu {
+margin-left:100px auto;
+position:absolute ;
+position:fixed;
+
+ padding-top:0px;
+ padding-left:400px;
+  width: 800px;
+  width: -moz-fit-content;
+  width: -webkit-fit-content;
+  width: fit-content;
+}
+
+.menu > li {
+  background: #964600;
+  float: left;
+  position: relative;
+  transform: skewX(25deg);
+  height:45px;
+  width:200px;
+}
+
+.menu a {
+  display: block;
+  color: #fff;
+  text-transform: uppercase;
+  text-decoration: none;
+  font-family: Arial, Helvetica;
+  font-size: 14px;
+}
+
+.menu li:hover {
+  background: #FF0000;
+
+}
+
+.menu > li > a {
+  transform: skewX(-25deg);
+  padding: 1em 2em;
+}
+
+/* Dropdown */
+.submenu {
+  position: absolute;
+  width: 200px;
+  left: 50%; margin-left: -100px;
+  transform: skewX(-25deg);
+  transform-origin: left top;
+}
+
+.submenu li {
+  background-color: #964600;
+  position: relative;
+  overflow: hidden;
+}
+
+.submenu > li > a {
+  padding: 1em 2em;
+
+}
+
+.submenu > li::after {
+  content: '';
+  position: absolute;
+  top: -125%;
+  height: 100%;
+  width: 100%;
+  box-shadow: 0 0 50px rgba(0, 0, 0, .9);
+}
+
+/* Odd stuff */
+.submenu > li:nth-child(odd){
+  transform: skewX(-25deg) translateX(0);
+}
+
+.submenu > li:nth-child(odd) > a {
+  transform: skewX(25deg);
+}
+
+.submenu > li:nth-child(odd)::after {
+  right: -50%;
+  transform: skewX(-25deg) rotate(3deg);
+}
+
+/* Even stuff */
+.submenu > li:nth-child(even){
+  transform: skewX(25deg) translateX(0);
+}
+
+.submenu > li:nth-child(even) > a {
+  transform: skewX(-25deg);
+}
+
+.submenu > li:nth-child(even)::after {
+  left: -50%;
+  transform: skewX(25deg) rotate(3deg);
+}
+
+/* Show dropdown */
+.submenu,
+.submenu li {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.submenu li {
+  transition: .2s ease transform;
+}
+
+.menu > li:hover .submenu,
+.menu > li:hover .submenu li {
+  opacity: 1;
+  visibility: visible;
+
+}
+
+.menu > li:hover .submenu li:nth-child(even){
+  transform: skewX(25deg) translateX(15px);
+}
+
+.menu > li:hover .submenu li:nth-child(odd){
+  transform: skewX(-25deg) translateX(-15px);
+}
+
+#deg{
+float:right;
+padding-top:0px;
+
+}
+
+.button {
+  padding: 0.75em 2em;
+  text-align: center;
+  text-decoration: none;
+  color: white;
+  font-size: 24px;
+  display: inline-block;
+
+  transition: all 0.2s ease-in-out;
+  position: relative;
+  overflow: hidden;
+  background-color:#964600;
+}
+
+  .button:before {
+
+
+    height: 100%;
+    width: 3em;
+    display: block;
+    position: absolute;
+    top: 0;
+    left: -4.5em;
+    transform: skewX(-45deg) translateX(0);
+    transition: none;
+  }
+  .button:hover {
+    background-color:#FF0000;
+    color: #FFFFFF;
+    border-bottom: 4px solid darken($color, 10%);
+    .button:before {
+      transform: skewX(-45deg) translateX(13.5em);
+     transition: all 0.5s ease-in-out;
+    }
+</style>
+<script>
+$(document).ready
+(
+	function()
+			{
+
+				$('#deg').click
+				(
+					function()
+					{
+						$('div').toggleClass('degrad');
+
+
+
+					}
+				)
+
+
+			}
+
+
+);
+
+</script>
+<script>
+jQuery(document).ready(function ($) {
+
+  $('#checkbox').change(function(){
+    setInterval(function () {
+        moveRight();
+    }, 3000);
+  });
+
+	var slideCount = $('#slider ul li').length;
+	var slideWidth = $('#slider ul li').width();
+	var slideHeight = $('#slider ul li').height();
+	var sliderUlWidth = slideCount * slideWidth;
+
+	$('#slider').css({ width: slideWidth, height: slideHeight });
+
+	$('#slider ul').css({ width: sliderUlWidth, marginLeft: - slideWidth });
+
+    $('#slider ul li:last-child').prependTo('#slider ul');
+
+    function moveLeft() {
+        $('#slider ul').animate({
+            left: + slideWidth
+        }, 200, function () {
+            $('#slider ul li:last-child').prependTo('#slider ul');
+            $('#slider ul').css('left', '');
+        });
+    };
+
+    function moveRight() {
+        $('#slider ul').animate({
+            left: - slideWidth
+        }, 200, function () {
+            $('#slider ul li:first-child').appendTo('#slider ul');
+            $('#slider ul').css('left', '');
+        });
+    };
+
+    $('a.control_prev').click(function () {
+        moveLeft();
+    });
+
+    $('a.control_next').click(function () {
+        moveRight();
+    });
+
+});
+</script>
+</head>
+<body >
+
+<ul class="menu cf">
+  <li><a href="">Wear</a>
+   <ul class="submenu">
+      <li><a href="">Kr3w</a></li>
+      <li><a href="">Nike SB</a></li>
+      <li><a href="">Etnies</a></li>
+      <li><a href="">Supra</a></li>
+	  <li><a href="">Emerica</a></li>
+	  <li><a href="">Loser Machine</a></li>
+	  <li><a href="">Dark Seas</a></li>
+	  <li><a href="">Volcom</a></li>
+	  <li><a href="">DC Shoes</a></li>
+	  <li><a href="">Jacker</a></li>
+	  <li><a href="">Santa Cruz</a></li>
+	  <li><a href="">RVCA</a></li>
+	  <li><a href="">Altamont</a></li>
+    </ul></li>
+  <li><a href="">Shoes</a>
+      <ul class="submenu">
+      <li><a href="">Adidas</a></li>
+      <li><a href="">Nike SB</a></li>
+      <li><a href="">Etnies</a></li>
+      <li><a href="">New Balance</a></li>
+	  <li><a href="">Emerica</a></li>
+	  <li><a href="">Converse</a></li>
+	  <li><a href="">DVS</a></li>
+	  <li><a href="">Lakai</a></li>
+	  <li><a href="">Vans</a></li>
+	  <li><a href="">ÉS</a></li>
+    </ul></li>
+  <li><a href="">Trucks</a>
+      <ul class="submenu">
+      <li><a href="">Independent</a></li>
+      <li><a href="">Thunder</a></li>
+      <li><a href="">Venture</a></li>
+      <li><a href="">Tensor</a></li>
+	  <li><a href="">Ace</a></li>
+	  <li><a href="">Royal</a></li>
+    </ul></li>
+  <li><a href="">Wheels</a>
+      <ul class="submenu">
+      <li><a href="">Ricta</a></li>
+      <li><a href="">Bones</a></li>
+      <li><a href="">Gold Wheels</a></li>
+      <li><a href="">Autobahn</a></li>
+	  <li><a href="">Haze Wheels</a></li>
+	  <li><a href="">Honeypot</a></li>
+	  <li><a href="">Spitfire</a></li>
+	  <li><a href="">OJ Wheels</a></li>
+	  <li><a href="">WayWard</a></li>
+    </ul></li>
+    <li><a href="">Boards</a>
+     <ul class="submenu">
+      <li><a href="">Santa Cruz</a></li>
+      <li><a href="">Primitive</a></li>
+      <li><a href="">Real</a></li>
+      <li><a href="">Sk8mafia</a></li>
+	  <li><a href="">Flip</a></li>
+	  <li><a href="">Anti Hero</a></li>
+	  <li><a href="">Baker</a></li>
+	  <li><a href="">Chocolate</a></li>
+	  <li><a href="">Girl</a></li>
+    </ul></li>
+	  <li><a href="">Profil</a>
+   <ul class="submenu">
+      <li><a href="file:///C:/wamp/www/Javascript2Distant/finalsiteconnexion.html">Connexion</a></li>
+	<li><a href="file:///C:/wamp/www/Javascript2Distant/finalsiteinscription.html">Inscription</a></li>
+    </ul></li>
+</ul>
+
+<button id="deg" class="button">
+Dégradé
+</button>
+
+<div id="events" class="yo" >
+
+</div>
+
+</body>
+</html>
