@@ -1,0 +1,194 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Document sans nom</title>
+<script>
+function update(element){
+          var p1=document.getElementById("p1");
+          if(element.getAttribute("name")=="color"){
+          	 p1.style.backgroundColor="rgb("+(element.value+1%255)+","+(element.value+254%255)+","+element.value+")";
+          	 var c= 255-element.value;
+          	 p1.style.color="rgb("+c+","+c+","+c+")";
+          }
+          else if(element.getAttribute("name")=="padding"){
+          		p1.style.padding=element.value+"px";	
+          }
+          else if(element.getAttribute("name")=="height"){
+          		p1.style.height=element.value+"px";	
+          }
+          else if(element.getAttribute("name")=="width"){
+          		p1.style.width=element.value+"px";	
+          }
+          else if(element.getAttribute("name")=="radius"){
+          		p1.style.borderRadius=element.value+"px";	
+          }
+          else if(element.getAttribute("name")=="rotation"){
+          		p1.style.transform="rotate("+element.value+"deg)";	
+          }
+		  else if(element.getAttribute("name")=="taille"){
+          		p1.style.fontSize=element.value+"px";	
+          }
+		   else if(element.getAttribute("name")=="poid"){
+          		p1.style.fontWeight=element.value;	
+          }
+		   else if(element.getAttribute("name")=="position"){
+          		p1.style.transform="rotate("+element.value+"deg)";	
+          }
+          
+	}
+
+
+</script>
+<style>
+input[type=range]{
+    -webkit-appearance: none;
+}
+
+input[type=range]::-webkit-slider-runnable-track {
+    width: 300px;
+    height: 5px;
+    background: #000000;
+    border: none;
+    border-radius: 3px;
+}
+
+input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    border: none;
+    height: 16px;
+    width: 16px;
+    border-radius: 50%;
+    background: #FF0303;
+    margin-top: -4px;
+}
+
+input[type=range]:focus {
+    outline: none;
+}
+
+input[type=range]:focus::-webkit-slider-runnable-track {
+    background: #000000;
+}
+input[type=range]{
+    /* fix for FF unable to apply focus style bug  */
+    border: 1px solid white; 
+
+    /*required for proper track sizing in FF*/
+    width: 300px;
+}
+
+input[type=range]::-moz-range-track {
+    width: 300px;
+    height: 5px;
+    background: #ddd;
+    border: none;
+    border-radius: 3px;
+}
+
+input[type=range]::-moz-range-thumb {
+    border: none;
+    height: 16px;
+    width: 16px;
+    border-radius: 50%;
+    background: goldenrod;
+}
+
+/*hide the outline behind the border*/
+input[type=range]:-moz-focusring{
+    outline: 1px solid white;
+    outline-offset: -1px;
+}
+
+input[type=range]:focus::-moz-range-track {
+    background: #ccc;
+}
+table{
+background:#00DCFF;
+}
+
+</style>
+</head>
+
+<body>
+<div>
+<table border="1" onsubmit="return false" oninput="level.value=color.valueAsNumber"  >
+<tr>
+<td>Couleur de fond (rgb)</td>
+<td>
+<form onsubmit="return false" oninput="level.value = color.valueAsNumber">
+ <input id="yo" type="range" min="0" max="255" step="5" name="color" oninput="update(this)" value="0" >
+  <output for="yo" name="level">0</output>/255
+</form>
+</td>
+
+<td rowspan="9" width="400" align="center"> <h1 id="p1">Titre de test</h1> </td>
+</tr>
+<tr>
+<td>Padding</td>
+<td>
+<form onsubmit="return false" oninput="level.value = padding.valueAsNumber">
+<input id="yo1" type="range" min="0" max="30" step="1" name="padding" oninput="update(this)" value="0">
+<output for="yo1" name="level">0</output>/30
+</form>
+</td>
+</tr>
+<tr>
+<td>Hauteur</td>
+<td>
+<form onsubmit="return false" oninput="level.value = height.valueAsNumber">
+<input id="yo2" type="range" min="0" max="200" step="5" name="height" oninput="update(this)" value="0">
+<output for="yo2" name="level">0</output>/200
+</form>
+</td>
+</tr>
+<tr>
+<td>Largeur</td>
+<td>
+<form onsubmit="return false" oninput="level.value = width.valueAsNumber">
+<input id="yo3" type="range" min="0" max="200" step="5" name="width" oninput="update(this)" value="0">
+<output for="yo3" name="level">0</output>/200
+</form>
+</td>
+</tr>
+<tr>
+<td>Arrondi</td>
+<td>
+<form onsubmit="return false" oninput="level.value = radius.valueAsNumber">
+<input id="yo4" type="range" min="0" max="200" step="1" name="radius" oninput="update(this)" value="0">
+<output for="yo4" name="level">0</output>/200
+</form>
+</td>
+</tr>
+<tr>
+<td>Rotation</td>
+<td>
+<form onsubmit="return false" oninput="level.value = rotation.valueAsNumber">
+<input id="yo5" type="range" min="0" max="360" step="5" name="rotation" oninput="update(this)" value="0">
+<output for="yo5" name="level">0</output>/360°
+</form>
+</td>
+</tr>
+<tr>
+<td>Taille</td>
+<td>
+<form onsubmit="return false" oninput="level.value = taille.valueAsNumber">
+<input id="yo6" type="range" min="32" max="70" step="1" name="taille" oninput="update(this)" value="0">
+<output for="yo6" name="level">0</output>/100
+</form>
+</td>
+</tr>
+<td>Poid</td>
+<td>
+leger<input type="range" min="200" max="600" step="400" name="poid" oninput="update(this)" value="200">gras
+</td>
+</tr>
+<td>Position</td>
+<td>
+horizontale<input type="range" min="0" max="90" step="90" name="position" oninput="update(this)" value="0">verticale
+</td>
+</tr>
+</table>
+
+</body>
+</html>
