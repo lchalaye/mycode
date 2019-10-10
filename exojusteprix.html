@@ -1,7 +1,6 @@
 Ce code permet de générer un nombre aléatoire et avec une boite de dialogue javascript va demander au user de proposer un nombre
 jusqu'a ce qu'il trouve le bon !
 
-
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -19,17 +18,21 @@ var prix_propose;
 var n = 0;
 
 do {
-  n = n+1;
- 
-  prix_propose = eval(prompt("Proposer un prix");
-  
-  if (prix_propose > juste_prix) alert ("moins");
-  
-  else if (prix_propose < juste_prix) alert("plus");
-}
-while (prix_propose != juste_prix);
-alert("Vous avez trouver le juste prix après ",n," coups");
 
+  n = n+1;
+
+  prix_propose = eval(prompt("Proposer un prix"));
+
+  if ( prix_propose > juste_prix) alert ("Moins");
+
+  else if (prix_propose < juste_prix) alert("Plus");
+
+}
+
+while (prix_propose != juste_prix)
+{
+  alert("Vous avez trouver le juste prix après "+n+" coups");
+}
 </script>
 
 </body>
